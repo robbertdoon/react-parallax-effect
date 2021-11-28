@@ -1,0 +1,61 @@
+@import '../../mixins.scss';
+
+// deze wrapped de hele pagina (inclusief de niet-parallax elementen)
+.wrapper {
+  perspective: 300px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  @include font-settings;
+}
+
+// deze wrapped de parallax groep (section) waarin meerdere layers moeten komen
+.layer-group {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+// deze wordt toegepast op ALLE layers van de parallax groep
+.layer {
+  position: absolute;
+  height: 100vh;
+  inset: 0;
+  @include align-center;
+}
+
+// deze wordt toegepast op de meest ver-staande layer
+.layer-deep {
+  z-index: -2;
+  background-image: url('../../tree.jpg');
+  background-size: cover;
+  transform: translateZ(-600px) scale(3);
+  // transform: translateZ(-600px);
+  // background-color: rgba(255, 100, 100, 0.2);
+}
+
+// deze wordt toegepast op de layer achter de base-layer
+.layer-back {
+  z-index: -1;
+
+  // transform: translateZ(-300px) scale(2);
+  transform: translateZ(-300px);
+  // background-color: rgba(255, 100, 100, 0.2);
+}
+
+// standaard layer - eigenlijk een niet-parallax layer, wel nodig om content normaal te kunnen laten scrollen
+.layer-base {
+  z-index: 0;
+  transform: translateZ(0);
+  text-align: center;
+  // background-color: rgba(255, 100, 100, 0.2);
+}
+
+// deze wordt toegepast op de layer voor de base-layer
+.layer-top {
+  z-index: 10;
+  transform: translateZ(90px) scale(1.3);
+  // transform: translateZ(90px);
+  // background-color: rgba(100, 100, 255, 0.4);
+}

@@ -1,0 +1,10 @@
+@mixin align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin font-settings {
+  font-size: 3rem;
+  color: white;
+}
